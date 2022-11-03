@@ -1,9 +1,11 @@
 import React from 'react'
 
-function Tableusers() {
+function TableUsers() {
   return (
-    <div>Tableusers</div>
+    <table id='table'>
+
+    </table>
   )
 }
 
-export default Tableusers
+export default TableUsers

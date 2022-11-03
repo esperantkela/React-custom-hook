@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Search from './Search'
 import useUpdateDocTitle from './hooks/useUpdateDocTitle';
+import TableUsers from './TableUsers';
 
 function MyContacts() {
 
@@ -45,6 +46,9 @@ function MyContacts() {
             searchStr={search}
             searchHandler={searchChange}
             />
+        }
+        {
+            <TableUsers/>
         }
     </React.Fragment>
   )
