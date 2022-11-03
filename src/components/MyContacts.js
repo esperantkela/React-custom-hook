@@ -16,17 +16,37 @@ function MyContacts() {
         fetch('https://jsonplaceholder.typicode.com/users')
         .then(response => response.json())
         .then(json => {
+            console.log(json)
             setUsers(json)
             setIsLoading(false)
         })
+        .catch(error=>{
+            console.log(error.message)
+        })
 
     }, []);
+
+    const msgDisplay = (msg, color)=>{
+        return (
+            <p style={{ textAlign: 'center', color:color }}>
+                {msg}
+            </p>
+        )
+    }
     
   return (
-    <Search
-    searchStr={search}
-    searchHandler={searchChange}
-    />
+    <React.Fragment>
+        {
+            isLoading
+            ?
+            msgDisplay('Veuillez patienter', 'red')
+            :
+            <Search
+            searchStr={search}
+            searchHandler={searchChange}
+            />
+        }
+    </React.Fragment>
   )
 }
 
