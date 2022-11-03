@@ -17,7 +17,6 @@ function MyContacts() {
         fetch('https://jsonplaceholder.typicode.com/users')
         .then(response => response.json())
         .then(json => {
-            console.log(json)
             setUsers(json)
             setIsLoading(false)
         })
@@ -48,7 +47,7 @@ function MyContacts() {
             />
         }
         {
-            <TableUsers/>
+            <TableUsers dataArray={users}/>
         }
     </React.Fragment>
   )
