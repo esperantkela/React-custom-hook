@@ -3,10 +3,19 @@ import useUpdateDocTitle from './hooks/useUpdateDocTitle';
 
 function ClickSayHello() {
     const [text, setText] = useState('');
+    const [isTrue, setIsTrue] = useState(true);
     useUpdateDocTitle(text)
+
+    useEffect(() =>{
+        if(isTrue){
+            setText('Bonjour')
+        }else{
+            setText('Bonsoir')
+        }
+    })
     
   return (
-    <button onClick={()=>setText('Hello word')}>Cliquer</button>
+    <button onClick={()=>setIsTrue(!isTrue)}>Cliquer</button>
   )
 }
 

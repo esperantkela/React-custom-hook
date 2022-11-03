@@ -1,14 +1,15 @@
 import React from 'react'
 
-function Search() {
+function Search({searchStr, searchHandler}) {
   return (
     <>
         <input
             type='text'
             placeholder='Chercher...'
-            value={}
-            onChange={}
+            value={searchStr}
+            onChange={searchHandler}
         />
+        <hr/>
     </>
   )
 }
