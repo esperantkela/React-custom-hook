@@ -53,3 +53,8 @@
   border: 1px solid #fff;
   padding: 12px;
 }
+
+#table th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+}
