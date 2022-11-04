@@ -6,8 +6,9 @@ import TableUsers from './TableUsers';
 function MyContacts() {
 
     const [search,setSearch] = useState('');
+    const [resultSearch,setResultSearch] = useState([]);
     const [isLoading,setIsLoading] = useState(true);
-    const [users,setUsers] = useState({});
+    const [users,setUsers] = useState([]);
     useUpdateDocTitle(search)
     const searchChange = (e)=>{
         setSearch(e.target.value )
@@ -25,6 +26,25 @@ function MyContacts() {
         })
 
     }, []);
+
+    const filterUser = () =>{
+       const foundUsers =  users.filter(user =>{
+            return Object.values(user)
+            .join(' ')
+            .toLowerCase()
+            .includes(search.toLowerCase())
+        })
+        setResultSearch(foundUsers)
+    }
+
+    useEffect(() => {
+       if(search !== ''){
+        filterUser()
+       }else{
+        setResultSearch([])
+       }
+
+    }, [search]);
 
     const msgDisplay = (msg, color)=>{
         return (
@@ -47,7 +67,11 @@ function MyContacts() {
             />
         }
         {
-            <TableUsers dataArray={users}/>
+            resultSearch.length ===0 && search !== '' ? msgDisplay('pas de résultat', 'red')
+            :
+            search === '' ?   msgDisplay('veuillez effectuer une recherche', 'red')
+            :
+            <TableUsers dataArray={resultSearch}/>
         }
     </React.Fragment>
   )
